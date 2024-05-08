@@ -21,9 +21,7 @@ app.get("/checker", async (req, res) => {
     if (!timezone)
       return res.json({ resp: "No timezone specified in the request" });
 
-    const response = await axios.get(
-      `http://${url}:4000/tz?zone=${timezone}`
-    );
+    const response = await axios.get(`http://${url}:4000/tz?zone=${timezone}`);
 
     console.log(`API call ${JSON.stringify(response.data)}`);
     const data = response.data;
@@ -54,6 +52,7 @@ app.get("/checker", async (req, res) => {
 
     return res.json({ resp });
   } catch (error) {
+    console.log(error);
     return res.json({ error: `Error processing the data: ${error}` });
   }
 });
