@@ -4,6 +4,8 @@ services:
     build: ./app1
     ports:
       - "4000:4000"
+    networks:
+      - unidad3
 
   app2:
     build: ./app2
@@ -11,3 +13,9 @@ services:
       - "4001:4001"
     depends_on:
       - app1
+    networks:
+      - unidad3
+
+networks:
+  unidad3:
+    external: false
